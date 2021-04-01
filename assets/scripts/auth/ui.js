@@ -11,6 +11,7 @@ const onSignInSuccess = function (response) {
   store.user = response.user
   $('#message').text(response.user.email + ' signed in successfully')
   $('form').trigger('reset')
+  $('#sign-out').show()
 }
 
 const onError = function (err) {
