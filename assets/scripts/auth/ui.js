@@ -18,8 +18,15 @@ const onError = function (err) {
   $('#message').text('Something went wrong, please try again.')
 }
 
+const onSignOutSuccess = function () {
+  store.user = null
+  $('#message').text('Signed out successfully')
+  $('form').trigger('reset')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
+  onSignOutSuccess,
   onError
 }
