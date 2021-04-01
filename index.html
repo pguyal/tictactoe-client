@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,18 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic-Tac-Toe</h1>
+      <p id='message'></p>
+
+      <h4>Sign Up</h4>
+      <form id='sign-up'>
+        <input name="credentials[email]" type="email" placeholder="Enter Email" required>
+        <input name="credentials[password]" type="password" placeholder="Enter Password" required>
+        <input name="credentials[password_confirmation]" type="password" placeholder="Confirm Password" required>
+        <input type="submit" value="Sign Up"/>
+      </form>
     </body>
+
 </html>
