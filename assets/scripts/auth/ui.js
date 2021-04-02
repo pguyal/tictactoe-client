@@ -6,7 +6,7 @@ const onSignUpSuccess = function () {
   $('#message').text('Account successfully created!')
   setTimeout(() => {
     $('#message').fadeOut('slow')
-  }, 5000)
+  }, 2000)
   $('form').trigger('reset')
 }
 
@@ -15,7 +15,7 @@ const onSignInSuccess = function (response) {
   $('#message').text(response.user.email + ' signed in successfully')
   setTimeout(() => {
     $('#message').fadeOut('slow')
-  }, 5000)
+  }, 2000)
   $('form').trigger('reset')
   $('#sign-out').show()
   $('#play-game').show()
@@ -28,8 +28,14 @@ const onSignOutSuccess = function () {
   $('#message').text('Signed out successfully')
   setTimeout(() => {
     $('#message').fadeOut('slow')
-  }, 5000)
+  }, 2000)
   $('form').trigger('reset')
+  $('#game-message').hide()
+  $('#play-game').hide()
+  $('#sign-out').hide()
+  $('#game-board').hide()
+  $('#sign-up').show()
+  $('#sign-in').show()
 }
 
 const onError = function () {
