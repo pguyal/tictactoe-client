@@ -18,6 +18,7 @@ const onSignInSuccess = function (response) {
   }, 5000)
   $('form').trigger('reset')
   $('#sign-out').show()
+  $('#play-game').show()
   $('#sign-up').hide()
   $('#sign-in').hide()
 }
