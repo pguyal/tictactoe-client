@@ -4,7 +4,7 @@ const ui = require('./ui')
 
 const onPlayGame = function (event) {
   event.preventDefault()
-  api.signOut()
+  api.playGame()
     .then(ui.onPlayGameSuccess)
     .catch()
 }
