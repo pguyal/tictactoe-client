@@ -32,8 +32,7 @@ const onSignOutSuccess = function () {
   $('form').trigger('reset')
 }
 
-const onError = function (err) {
-  console.error(err)
+const onError = function () {
   $('#message').text('Something went wrong, please try again.')
   setTimeout(() => {
     $('#message').fadeOut('slow')
