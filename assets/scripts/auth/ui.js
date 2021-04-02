@@ -4,24 +4,39 @@ const store = require('../store')
 
 const onSignUpSuccess = function () {
   $('#message').text('Account successfully created!')
+  setTimeout(() => {
+    $('#message').fadeOut('slow')
+  }, 5000)
   $('form').trigger('reset')
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
   $('#message').text(response.user.email + ' signed in successfully')
+  setTimeout(() => {
+    $('#message').fadeOut('slow')
+  }, 5000)
   $('form').trigger('reset')
   $('#sign-out').show()
-}
-
-const onError = function (err) {
-  console.error(err)
-  $('#message').text('Something went wrong, please try again.')
+  $('#sign-up').hide()
+  $('#sign-in').hide()
 }
 
 const onSignOutSuccess = function () {
   store.user = null
   $('#message').text('Signed out successfully')
+  setTimeout(() => {
+    $('#message').fadeOut('slow')
+  }, 5000)
+  $('form').trigger('reset')
+}
+
+const onError = function (err) {
+  console.error(err)
+  $('#message').text('Something went wrong, please try again.')
+  setTimeout(() => {
+    $('#message').fadeOut('slow')
+  }, 5000)
   $('form').trigger('reset')
 }
 
