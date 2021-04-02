@@ -9,6 +9,8 @@ console.log('authEvents', authEvents)
 
 $(() => {
   $('#sign-out').hide()
+  $('#play-game').hide()
+  $('#game-board').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
