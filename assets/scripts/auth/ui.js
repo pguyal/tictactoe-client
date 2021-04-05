@@ -4,8 +4,10 @@ const store = require('../store')
 
 const onSignUpSuccess = function () {
   $('#message').text('Account successfully created!')
+  $('#message').addClass('success')
   setTimeout(() => {
-    $('#message').fadeOut('slow')
+    $('#message').text('')
+    $('#message').removeClass('success')
   }, 2000)
   $('form').trigger('reset')
 }
@@ -13,8 +15,10 @@ const onSignUpSuccess = function () {
 const onSignInSuccess = function (response) {
   store.user = response.user
   $('#message').text(response.user.email + ' signed in successfully')
+  $('#message').addClass('success')
   setTimeout(() => {
-    $('#message').fadeOut('slow')
+    $('#message').text('')
+    $('#message').removeClass('success')
   }, 2000)
   $('form').trigger('reset')
   $('#sign-out').show()
@@ -26,8 +30,10 @@ const onSignInSuccess = function (response) {
 const onSignOutSuccess = function () {
   store.user = null
   $('#message').text('Signed out successfully')
+  $('#message').addClass('success')
   setTimeout(() => {
-    $('#message').fadeOut('slow')
+    $('#message').text('')
+    $('#message').removeClass('success')
   }, 2000)
   $('form').trigger('reset')
   $('#game-message').hide()
@@ -40,8 +46,10 @@ const onSignOutSuccess = function () {
 
 const onError = function () {
   $('#message').text('Something went wrong, please try again.')
+  $('#message').addClass('failure')
   setTimeout(() => {
-    $('#message').fadeOut('slow')
+    $('#message').text('')
+    $('#message').removeClass('failure')
   }, 5000)
   $('form').trigger('reset')
 }
