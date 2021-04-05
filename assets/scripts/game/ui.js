@@ -14,8 +14,10 @@ const onPlayGameSuccess = function (info) {
 
 const onError = function () {
   $('#message').text('Something went wrong, please try again.')
+  $('#message').addClass('failure')
   setTimeout(() => {
-    $('#message').fadeOut('slow')
+    $('#message').text('')
+    $('#message').removeClass('failure')
   }, 5000)
   $('form').trigger('reset')
 }
