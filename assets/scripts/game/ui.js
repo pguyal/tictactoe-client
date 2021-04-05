@@ -6,6 +6,7 @@ const onPlayGameSuccess = function (info) {
   store.game = info.game
   console.log(info.game.cells)
   console.log(info.game._id)
+  $('#game-message').show()
   $('#game-message').text("Player one's turn")
   $('#play-game').hide()
   $('#game-board').show()
