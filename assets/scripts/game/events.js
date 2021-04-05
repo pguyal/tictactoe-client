@@ -6,7 +6,7 @@ const onPlayGame = function (event) {
   event.preventDefault()
   api.playGame()
     .then(ui.onPlayGameSuccess)
-    .catch()
+    .catch(ui.onError)
 }
 
 module.exports = {
