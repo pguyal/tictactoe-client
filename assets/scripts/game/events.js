@@ -16,6 +16,7 @@ const onBoardClick = function (event) {
   if (space.text() === '') {
     space.text(currentPlayer)
     currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
+    // the above code is shorthand for the code below:
     // if (currentPlayer === 'X') {
     // currentPlayer = 'O'
     // } else {
@@ -30,9 +31,9 @@ const onBoardClick = function (event) {
     }, 2000)
   }
   if (currentPlayer === 'X') {
-    $('#game-message').text('Player One\'s Turn')
+    $('#game-message').text('Player X\'s Turn')
   } else if (currentPlayer === 'O') {
-    $('#game-message').text('Player Two\'s Turn')
+    $('#game-message').text('Player O\'s Turn')
   }
 }
 // api.boardClick()
