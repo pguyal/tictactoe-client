@@ -7,7 +7,7 @@ const onPlayGameSuccess = function (info) {
   console.log(info.game.cells)
   console.log(info.game._id)
   $('#game-message').show()
-  $('#game-message').text("Player one's turn")
+  $('#game-message').text("Player One's turn")
   $('#play-game').hide()
   $('#game-board').show()
 }
