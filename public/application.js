@@ -16567,7 +16567,7 @@ $(function () {
   $('#sign-in').on('submit', authEvents.onSignIn);
   $('#sign-out').on('click', authEvents.onSignOut);
   $('#play-game').on('click', gameEvents.onPlayGame);
-  $('#game-board').on('click', gameEvents.onBoardClick);
+  $('#game-board').on('click', gameEvents.onPlayerClick);
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)))
 
@@ -16823,8 +16823,10 @@ var onPlayGame = function onPlayGame(event) {
 };
 
 var currentPlayer = 'X';
-// const index = event.target.id
-var onBoardClick = function onBoardClick(event) {
+var onPlayerClick = function onPlayerClick(event) {
+  var index = event.target.id;
+  var value = currentPlayer;
+  var over = store.game.over;
   var space = $(event.target);
   if (store.game.over === true) {
     return;
@@ -16852,6 +16854,7 @@ var onBoardClick = function onBoardClick(event) {
     $('#game-message').text('Player O\'s Turn');
   }
   checkWin();
+  api.playerClick(index, value, over).catch(ui.onError);
 };
 
 var checkWin = function checkWin() {
@@ -16879,13 +16882,10 @@ var checkWin = function checkWin() {
     $('#game-message').text('It\'s a tie!');
   }
 };
-// api.boardClick(game)
-//   .then(ui.onBoardClickSuccess)
-//   .catch(ui.onError)
 
 module.exports = {
   onPlayGame: onPlayGame,
-  onBoardClick: onBoardClick
+  onPlayerClick: onPlayerClick
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)))
 
@@ -16909,8 +16909,29 @@ var playGame = function playGame() {
   });
 };
 
+var playerClick = function playerClick(index, value, over) {
+  console.log(store.game);
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  });
+};
+
 module.exports = {
-  playGame: playGame
+  playGame: playGame,
+  playerClick: playerClick
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)))
 
