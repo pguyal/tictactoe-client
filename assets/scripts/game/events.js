@@ -12,8 +12,10 @@ const onPlayGame = function (event) {
 }
 
 let currentPlayer = 'X'
-// const index = event.target.id
-const onBoardClick = function (event) {
+const onPlayerClick = function (event) {
+  const index = event.target.id
+  const value = currentPlayer
+  const over = store.game.over
   const space = $(event.target)
   if (store.game.over === true) {
     return
@@ -41,6 +43,8 @@ const onBoardClick = function (event) {
     $('#game-message').text('Player O\'s Turn')
   }
   checkWin()
+  api.playerClick(index, value, over)
+    .catch(ui.onError)
 }
 
 const checkWin = function () {
@@ -80,11 +84,8 @@ const checkWin = function () {
     $('#game-message').text('It\'s a tie!')
   }
 }
-// api.boardClick(game)
-//   .then(ui.onBoardClickSuccess)
-//   .catch(ui.onError)
 
 module.exports = {
   onPlayGame,
-  onBoardClick
+  onPlayerClick
 }
