@@ -11,6 +11,27 @@ const playGame = function () {
   })
 }
 
+const playerClick = function (index, value, over) {
+  console.log(store.game)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  })
+}
+
 module.exports = {
-  playGame
+  playGame,
+  playerClick
 }
